@@ -23,32 +23,6 @@ def time_taken(func):
     return __inner
 
 
-@time_taken
-def auto_complete_1(word_dict, query_string):
-    """
-
-    :param word_dict:
-    :param query_string:
-    :return:
-    """
-    matched_words = []
-    for each_word in word_dict:
-        if each_word.startswith(query_string):
-            matched_words.append(each_word)
-    return matched_words
-
-
-@time_taken
-def auto_complete_2(word_dict, query_string):
-    """
-
-    :param word_dict:
-    :param query_string:
-    :return:
-    """
-    return [each_word for each_word in word_dict if each_word.startswith(query_string)]
-
-
 suggestions = []
 
 
@@ -96,7 +70,7 @@ class Node:
 
 
 @time_taken
-def auto_complete_3(word_dict, query_string):
+def auto_complete_1(word_dict, query_string):
     root = Node("root")
     for query in word_dict:
         root.add(query.lower(), query.lower())
@@ -106,7 +80,33 @@ def auto_complete_3(word_dict, query_string):
     return suggestions
 
 
+@time_taken
+def auto_complete_2(word_dict, query_string):
+    """
+
+    :param word_dict:
+    :param query_string:
+    :return:
+    """
+    matched_words = []
+    for each_word in word_dict:
+        if each_word.startswith(query_string):
+            matched_words.append(each_word)
+    return matched_words
+
+
+@time_taken
+def auto_complete_3(word_dict, query_string):
+    """
+
+    :param word_dict:
+    :param query_string:
+    :return:
+    """
+    return [each_word for each_word in word_dict if each_word.startswith(query_string)]
+
+
 if __name__ == '__main__':
-    assert auto_complete_1(word_dict=['dog', 'deer', 'deal'], query_string='de') == ['deer', 'deal']
-    assert auto_complete_2(word_dict=['dog', 'deer', 'deal'], query_string='de') == ['deer', 'deal']
-    assert auto_complete_3(word_dict=['dog', 'deer', 'deal'], query_string='de') == ['deer', 'deal']
+    assert auto_complete_1(word_dict=['dog', 'deer', 'deal'], query_string='de') == ['deer', 'deal']  # 34896 ns
+    assert auto_complete_2(word_dict=['dog', 'deer', 'deal'], query_string='de') == ['deer', 'deal']  #  3592 ns
+    assert auto_complete_3(word_dict=['dog', 'deer', 'deal'], query_string='de') == ['deer', 'deal']  #  3593 ns
