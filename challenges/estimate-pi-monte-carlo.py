@@ -8,7 +8,8 @@ Hint: The basic equation of a circle is x2 + y2 = r2.
 
 """
 
-import random, math
+import math
+import secrets
 
 def isInsideCircle(x, y):
     return x*x + y*y <= 0.5*0.5
@@ -19,8 +20,8 @@ if __name__ == "__main__":
     insideTheCircleCount = 0
 
     for _ in range(NO_OF_POINTS):
-        x = random.uniform(-0.5, 0.5)
-        y = random.uniform(-0.5, 0.5)
+        x = secrets.SystemRandom().uniform(-0.5, 0.5)
+        y = secrets.SystemRandom().uniform(-0.5, 0.5)
 
         if isInsideCircle(x,y):
             insideTheCircleCount += 1
