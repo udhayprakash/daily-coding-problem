@@ -7,7 +7,8 @@ Recall that a Pythogorean triplet (a, b, c) is defined by the equation a2+ b2= c
 
 """
 
-import random, math
+import math
+import secrets
 
 
 def has_pythagorean_triplet(arr):
@@ -26,7 +27,7 @@ def has_pythagorean_triplet(arr):
 
 
 def main():
-    arr = [random.randint(1, 1000) for _ in range(1000)]
+    arr = [secrets.SystemRandom().randint(1, 1000) for _ in range(1000)]
     print(has_pythagorean_triplet(arr))
 
 
