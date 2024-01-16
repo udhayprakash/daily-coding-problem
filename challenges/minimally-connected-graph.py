@@ -35,7 +35,7 @@ def isMinimallyConnected(adjacencyMatrix):
         Max(row) > 1            =>  Parallel Edge
         Max([row[i][i]]) != 0   =>  Self Loop 
     """
-    if min([max(row) for row in adjacencyMatrix]) != 1 or max([max(row) for row in adjacencyMatrix]) != 1 or max([adjacencyMatrix[i][i] for i in range(len(adjacencyMatrix))]) != 0:
+    if min(max(row) for row in adjacencyMatrix) != 1 or max(max(row) for row in adjacencyMatrix) != 1 or max(adjacencyMatrix[i][i] for i in range(len(adjacencyMatrix))) != 0:
         return False
 
     # Checking for cycles
