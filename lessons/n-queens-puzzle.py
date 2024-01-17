@@ -3,7 +3,8 @@ You have an N by N board. Write a function that returns the number of possible a
 N queens can be placed on the board without threatening each other,i.e. no two queens share the same row, column, or diagonal.
 """
 
-def nQueens(n, board=[]):
+def nQueens(n, board=None):
+    board = [] if board is None else board
     if n == len(board):
         return 1
     
