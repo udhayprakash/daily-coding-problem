@@ -26,9 +26,8 @@ def selectSample():
     maxProbability = secrets.SystemRandom().random()
 
     while True:
-        currentSample = stream.nextSample()
         
-        if currentSample == None:
+        if (currentSample := stream.nextSample()) == None:
             print("Received", sampleCount, "samples.")
             return selectedSample
 
